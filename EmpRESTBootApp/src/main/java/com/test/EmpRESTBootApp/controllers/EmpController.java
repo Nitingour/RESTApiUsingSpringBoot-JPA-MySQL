@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.test.EmpRESTBootApp.entities.Emp;
 import com.test.EmpRESTBootApp.services.EmpService;
@@ -52,3 +53,20 @@ public class EmpController {
  	   return empservice.updateEmp(eid,ename,salary);
    }
 }
+
+
+/*  From another spring boot project we can access this api 
+ @RestController
+public class ClientController {
+	
+@RequestMapping("/get")
+public String hello()
+{
+    RestTemplate rt=new RestTemplate();
+	Emp e=rt.getForObject("http://localhost:9091/api/getEmp/103", Emp.class);
+	
+	return e.getEid()+"  "+e.getEname()+" "+e.getSalary();	
+}
+}
+  
+ */
